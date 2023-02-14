@@ -1,0 +1,423 @@
+{
+    "modelName": "SDC",
+    "collections": [
+        {
+            "collectionName": "product",
+            "type": "object",
+            "properties": [
+                {
+                    "name": "_id",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "objectId",
+                    "GUID": "9feb605c-dd02-4a78-bc47-3e98f6cb4b20",
+                    "error": {}
+                },
+                {
+                    "name": "product_id",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "numeric",
+                    "GUID": "0e350de6-9da2-44b6-b0ee-849d5fc439de",
+                    "error": {}
+                },
+                {
+                    "name": "name",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "09873292-f9ac-487e-a84d-b0d9c1c911ca",
+                    "error": {}
+                },
+                {
+                    "name": "slogan",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "4036ccc4-5acf-4bc2-b8d5-0ba924462c5e",
+                    "error": {}
+                },
+                {
+                    "name": "description",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "6908673a-63cc-4700-a7f7-d4f6fba78222",
+                    "error": {}
+                },
+                {
+                    "name": "category",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "51f35b4c-1768-4eee-90d6-bd78b3ac02d5",
+                    "error": {}
+                },
+                {
+                    "name": "default_price",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "numeric",
+                    "GUID": "bd456478-f082-4480-ac3a-d32703a0b9ab",
+                    "error": {}
+                },
+                {
+                    "name": "feature",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "document",
+                    "properties": [
+                        {
+                            "name": "feature",
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "string",
+                            "GUID": "72584e56-fb2a-4815-b8d1-7fc53ec74ad7",
+                            "foreignCollection": "",
+                            "foreignField": [],
+                            "error": {
+                                "name": false,
+                                "code": false
+                            }
+                        },
+                        {
+                            "name": "value",
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "string",
+                            "GUID": "109d49cd-7b0d-4b6d-aec2-bebdcdbbffdd",
+                            "foreignCollection": "",
+                            "foreignField": [],
+                            "error": {
+                                "name": false,
+                                "code": false
+                            }
+                        }
+                    ],
+                    "additionalProperties": false,
+                    "GUID": "c79331d6-31dc-4453-9615-94931a9b78ec",
+                    "error": {}
+                },
+                {
+                    "name": "style",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "document",
+                    "properties": [
+                        {
+                            "name": "style_id",
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "numeric",
+                            "GUID": "a89e8ee1-9fa0-48b3-9b5e-a6aed54039f8",
+                            "foreignCollection": "",
+                            "foreignField": [],
+                            "error": {
+                                "name": false,
+                                "code": false
+                            }
+                        },
+                        {
+                            "name": "name",
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "string",
+                            "GUID": "39e5419f-5166-40af-8cab-72591ec6591c",
+                            "foreignCollection": "",
+                            "foreignField": [],
+                            "error": {
+                                "name": false,
+                                "code": false
+                            }
+                        },
+                        {
+                            "name": "original_price",
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "numeric",
+                            "GUID": "a939fc1c-44c0-4efc-bedf-c8748b53e9f5",
+                            "foreignCollection": "",
+                            "foreignField": [],
+                            "error": {
+                                "name": false,
+                                "code": false
+                            }
+                        },
+                        {
+                            "name": "sale_price",
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "numeric",
+                            "GUID": "c607556d-7120-48ed-b95b-927487723dfc",
+                            "foreignCollection": "",
+                            "foreignField": [],
+                            "error": {
+                                "name": false,
+                                "code": false
+                            }
+                        },
+                        {
+                            "name": "default?",
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "boolean",
+                            "GUID": "7c41b2b7-5764-4121-8420-3c8e7be9d687",
+                            "foreignCollection": "",
+                            "foreignField": [],
+                            "error": {
+                                "name": false,
+                                "code": false
+                            }
+                        },
+                        {
+                            "name": "photo",
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "document",
+                            "properties": [
+                                {
+                                    "name": "thumbnail_url",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "string",
+                                    "GUID": "e153da9a-5499-4eed-9d1c-a71cb33d32a0",
+                                    "foreignCollection": "",
+                                    "foreignField": [],
+                                    "error": {
+                                        "name": false,
+                                        "code": false
+                                    }
+                                },
+                                {
+                                    "name": "url",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "string",
+                                    "GUID": "1d743dfe-0219-476f-8fda-b8bdeee5dab6",
+                                    "foreignCollection": "",
+                                    "foreignField": [],
+                                    "error": {
+                                        "name": false,
+                                        "code": false
+                                    }
+                                }
+                            ],
+                            "additionalProperties": false,
+                            "GUID": "cd98a8b0-4638-4da2-8ea1-d2bd41b910fb",
+                            "foreignCollection": "",
+                            "foreignField": [],
+                            "error": {}
+                        },
+                        {
+                            "name": "sku",
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "document",
+                            "properties": [
+                                {
+                                    "name": "size",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "string",
+                                    "GUID": "66740562-001f-49de-82a0-7021701f66d4",
+                                    "foreignCollection": "",
+                                    "foreignField": [],
+                                    "error": {
+                                        "name": false,
+                                        "code": false
+                                    }
+                                },
+                                {
+                                    "name": "quantity",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "numeric",
+                                    "GUID": "fde777b7-28e5-4d94-8716-a96541dc43fd",
+                                    "foreignCollection": "",
+                                    "foreignField": [],
+                                    "error": {
+                                        "name": false,
+                                        "code": false
+                                    }
+                                }
+                            ],
+                            "additionalProperties": false,
+                            "GUID": "a2472bdd-eebe-4203-bec0-cc7540901289",
+                            "foreignCollection": "",
+                            "foreignField": [],
+                            "error": {}
+                        }
+                    ],
+                    "additionalProperties": false,
+                    "GUID": "fdc3daf6-ff2c-423e-8fe2-bf12974366d4",
+                    "error": {}
+                }
+            ],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "89e309c7-ead5-4965-bbcd-c55f286d552c"
+            },
+            "isActivated": true,
+            "additionalProperties": false,
+            "validationLevel": "Off",
+            "validationAction": "Warn",
+            "storageEngineName": "WiredTiger",
+            "collectionUsers": [],
+            "indexes": [],
+            "collation": {},
+            "sharding": {
+                "unique": true,
+                "collation": "null"
+            },
+            "GUID": "7823399d-8a57-4a0e-9278-d60193bbdd62",
+            "bucketId": "dfbf0396-a355-4e2a-ae4c-0c7612057fbe"
+        }
+    ],
+    "buckets": [
+        {
+            "name": "PRODUCTS API DATABASE",
+            "type": "bucket",
+            "collectionIds": [
+                "7823399d-8a57-4a0e-9278-d60193bbdd62"
+            ],
+            "backgroundColor": {
+                "r": 54,
+                "g": 69,
+                "b": 79,
+                "a": 1
+            },
+            "show": true,
+            "isActivated": true,
+            "GUID": "dfbf0396-a355-4e2a-ae4c-0c7612057fbe",
+            "hackoladeMeta": {
+                "validationErrors": {
+                    "name": true
+                }
+            }
+        }
+    ],
+    "views": [],
+    "relationships": [],
+    "users": [],
+    "diagramViews": [],
+    "idToNameHashTable": {
+        "dfbf0396-a355-4e2a-ae4c-0c7612057fbe": "PRODUCTS API DATABASE",
+        "7823399d-8a57-4a0e-9278-d60193bbdd62": "product",
+        "09873292-f9ac-487e-a84d-b0d9c1c911ca": "name",
+        "4036ccc4-5acf-4bc2-b8d5-0ba924462c5e": "slogan",
+        "6908673a-63cc-4700-a7f7-d4f6fba78222": "description",
+        "51f35b4c-1768-4eee-90d6-bd78b3ac02d5": "category",
+        "bd456478-f082-4480-ac3a-d32703a0b9ab": "default_price",
+        "c79331d6-31dc-4453-9615-94931a9b78ec": "feature",
+        "0e350de6-9da2-44b6-b0ee-849d5fc439de": "product_id",
+        "fdc3daf6-ff2c-423e-8fe2-bf12974366d4": "style",
+        "9feb605c-dd02-4a78-bc47-3e98f6cb4b20": "_id",
+        "a89e8ee1-9fa0-48b3-9b5e-a6aed54039f8": "style_id",
+        "39e5419f-5166-40af-8cab-72591ec6591c": "name",
+        "a939fc1c-44c0-4efc-bedf-c8748b53e9f5": "original_price",
+        "c607556d-7120-48ed-b95b-927487723dfc": "sale_price",
+        "7c41b2b7-5764-4121-8420-3c8e7be9d687": "default?",
+        "cd98a8b0-4638-4da2-8ea1-d2bd41b910fb": "photo",
+        "a2472bdd-eebe-4203-bec0-cc7540901289": "sku",
+        "72584e56-fb2a-4815-b8d1-7fc53ec74ad7": "feature",
+        "109d49cd-7b0d-4b6d-aec2-bebdcdbbffdd": "value",
+        "e153da9a-5499-4eed-9d1c-a71cb33d32a0": "thumbnail_url",
+        "1d743dfe-0219-476f-8fda-b8bdeee5dab6": "url",
+        "66740562-001f-49de-82a0-7021701f66d4": "size",
+        "fde777b7-28e5-4d94-8716-a96541dc43fd": "quantity"
+    },
+    "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "93e0b088-03b3-487c-bafd-adf30964bf98"
+    },
+    "polyglotDefinitions": {
+        "type": "polyglotDefinitions",
+        "properties": [],
+        "GUID": "8cf5c648-0089-4436-a400-909b3807fc39"
+    },
+    "externalDefinitions": {
+        "type": "externalDefinitions",
+        "properties": [],
+        "GUID": "fc54d67f-e3d2-4db3-8536-5cb37513b0f0"
+    },
+    "sources": [],
+    "decorativeSymbols": [],
+    "dbVersion": "v5.0",
+    "dbVendor": "MongoDB",
+    "appTarget": "MONGODB",
+    "creationTS": "2023-02-14T23:04:25.774Z",
+    "GUID": "aa0739b3-b1fa-4c4e-bbbc-eb049e941a4a",
+    "isLineageEnabled": false,
+    "hackoladeMeta": {
+        "validationErrors": {
+            "modelName": false
+        }
+    },
+    "lastModifTS": "2023-02-14T23:42:30.392Z",
+    "persistenceSchemaVersion": "6",
+    "isCreatedByPlugin": true,
+    "pluginInformation": {
+        "pluginEngineVersion": "1.0.0"
+    },
+    "applicationInformation": {
+        "version": "6.9.0"
+    },
+    "settings": {
+        "centralPane": {
+            "dbLevel": {
+                "erd": [
+                    {
+                        "GUID": "7823399d-8a57-4a0e-9278-d60193bbdd62",
+                        "x": 428.99999999999994,
+                        "y": 175.6666666666669,
+                        "width": 247,
+                        "height": 429,
+                        "color": {
+                            "hex": "#2196f3"
+                        }
+                    }
+                ],
+                "erdDefinitions": {
+                    "erd": [],
+                    "rootPath": [],
+                    "entities": [],
+                    "decorativeSymbols": []
+                },
+                "buckets": [
+                    {
+                        "x": 388.99999999999994,
+                        "y": 135.6666666666669,
+                        "GUID": "dfbf0396-a355-4e2a-ae4c-0c7612057fbe"
+                    }
+                ],
+                "collapsedNodes": [],
+                "activeRelationship": "",
+                "activeRelationshipFields": {
+                    "childField": [],
+                    "parentField": []
+                },
+                "selectedCollections": [],
+                "displayColorPicker": false,
+                "graphView": {
+                    "erd": [],
+                    "buckets": [],
+                    "decorativeSymbols": [],
+                    "forceLayout": true,
+                    "defaultLinkLength": 300
+                },
+                "diagramViews": [],
+                "decorativeSymbols": [],
+                "nestedCollectionsLayout": "horizontal",
+                "options": []
+            },
+            "collectionLevel": {},
+            "changed": false
+        },
+        "dtDiagram": {
+            "collapsedNodes": [],
+            "shouldDistributeCollections": false
+        }
+    }
+}
