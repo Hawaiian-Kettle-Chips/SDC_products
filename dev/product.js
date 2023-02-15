@@ -60,5 +60,10 @@ var product = new Schema({
                 type: Number
             }
         })
-    })
+    }),
+    related: [
+        {
+            type: Schema.Types.ObjectId
+        }
+    ]
 });
