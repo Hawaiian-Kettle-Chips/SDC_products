@@ -22,9 +22,23 @@ function returnStatusJson(request, response) {
   response.json({ database: db });
 }
 
-function getProductByID() { }
-function getProductStylesByID() { }
-function getRelatedProductIDs() { }
+function getProductByID(request, response) {
+  const product = models.getProductByID();
+  response.status(200)
+  response.json(product);
+}
+
+function getProductStylesByID(request, response) {
+  const styles = models.getProductStylesByID();
+  response.status(200)
+  response.json(styles);
+}
+
+function getRelatedProductIDs(request, response) {
+  const related = models.getRelatedProductIDs();
+  response.status(200)
+  response.json(related);
+}
 
 
 module.exports = {
