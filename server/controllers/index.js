@@ -1,10 +1,13 @@
 // IMPORTS
+const db = require('../../database');
 const models = require('../models');
 
 
 function genericResponse(request, response) {
+  console.log(db);
   response.status(200);
-  response.send('The Server Is On');
+  response.send(`The Server is: ✅
+  <p>The Database is ready for queries: ${db.readyForQuery ? '✅' : '❌'}`);
 }
 
 function return404Page(request, response) {
