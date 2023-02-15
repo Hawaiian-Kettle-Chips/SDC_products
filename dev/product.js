@@ -1,4 +1,55 @@
-var product = new Schema({
+// Nested Mongoose SCHEMAS for MongoDB
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
+
+const featureSchema = new Schema({
+    feature: {
+        type: String
+    },
+    value: {
+        type: String
+    }
+});
+
+const skuSchema = new Schema({
+    size: {
+        type: String
+    },
+    quantity: {
+        type: Number
+    }
+});
+
+const photoSchema = new Schema({
+    thumbnail_url: {
+        type: String
+    },
+    url: {
+        type: String
+    }
+});
+
+const styleSchema = new Schema({
+    style_id: {
+        type: Number
+    },
+    name: {
+        type: String
+    },
+    original_price: {
+        type: Number
+    },
+    sale_price: {
+        type: Number
+    },
+    "default?": {
+        type: Boolean
+    },
+    photo: [photoSchema],
+    sku: [skuSchema]
+}),
+
+const productSchema = new Schema({
     _id: {
         type: Schema.Types.ObjectId
     },
@@ -20,50 +71,19 @@ var product = new Schema({
     default_price: {
         type: Number
     },
-    feature: new Schema({
-        feature: {
-            type: String
-        },
-        value: {
-            type: String
-        }
-    }),
-    style: new Schema({
-        style_id: {
-            type: Number
-        },
-        name: {
-            type: String
-        },
-        original_price: {
-            type: Number
-        },
-        sale_price: {
-            type: Number
-        },
-        "default?": {
-            type: Boolean
-        },
-        photo: new Schema({
-            thumbnail_url: {
-                type: String
-            },
-            url: {
-                type: String
-            }
-        }),
-        sku: new Schema({
-            size: {
-                type: String
-            },
-            quantity: {
-                type: Number
-            }
-        })
-    }),
+    feature: [featureSchema],
+    style: [styleSchema],
     related: [
         {
             type: Schema.Types.ObjectId
         }
     ]
 });
+
+export {
+    featureSchema,
+    photoSchema,
+    productSchema,
+    skuSchema,
+    styleSchema
+};
