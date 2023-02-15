@@ -1,0 +1,4 @@
+# GIT IGNORE
+.env
+node_modules/
+coverage/
