@@ -1,3 +1,6 @@
+// IMPORTS
+const models = require('../models');
+
 
 function return404Page(request, response) {
   console.log('returning 404 page');
