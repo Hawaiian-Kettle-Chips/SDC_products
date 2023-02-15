@@ -47,7 +47,7 @@ const styleSchema = new Schema({
     },
     photo: [photoSchema],
     sku: [skuSchema]
-}),
+});
 
 const productSchema = new Schema({
     _id: {
