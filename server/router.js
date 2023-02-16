@@ -15,6 +15,8 @@ router.get('/products/:product_id/related', controllers.getRelatedProductIDs);
 
 router.get('/status', controllers.status);
 
+router.get('/test', controllers.test);
+
 router.get('*', controllers.return404);
 
 

@@ -23,10 +23,23 @@ function returnAllTestData() {
   return testData;
 }
 
+function testDatabase() {
+  db.connect()
+    .then((client) => {
+      client
+        .query('SELECT * FROM styles WHERE id = 1')
+        .then((response) => {
+          client.release();
+          console.log(response.rows);
+        })
+    });
+}
+
 
 module.exports = {
   getProductByID,
   getProductStylesByID,
   getRelatedProductIDs,
-  returnAllTestData
+  returnAllTestData,
+  testDatabase
 };

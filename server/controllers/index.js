@@ -7,7 +7,7 @@ function genericResponse(request, response) {
   console.info('   returning status page');
   response.status(200);
   response.send(`The Server is: ✅
-  <p>The Database is ready for queries: ${db.readyForQuery ? '✅' : '❌'}`);
+  <p>The Database is ready for queries: ${db._clients.length > 0 ? '✅' : '❌'}`);
 }
 
 function return404Page(request, response) {
@@ -40,6 +40,13 @@ function getRelatedProductIDs(request, response) {
   response.json(related);
 }
 
+async function testDatabase(request, response) {
+  const rows = await models.testDatabase();
+  console.log('CONTROLLER', rows);
+  response.status(200);
+  response.json(rows);
+}
+
 
 module.exports = {
   getProductByID,
@@ -47,5 +54,6 @@ module.exports = {
   getRelatedProductIDs,
   return404: return404Page,
   status: returnStatusJson,
+  test: testDatabase,
   default: genericResponse
 };

@@ -1,9 +1,10 @@
 // IMPORTS
-const { Client } = require('pg')
-const client = new Client()
-client.connect((error) => {
+const { Pool } = require('pg')
+const pool = new Pool();
+
+pool.connect((error) => {
   if (error) { console.error('DB:', error); }
-  else { console.info(`DB:\tListening at http://${client.host}:${client.port}`); }
+  else { console.info(`DB:\tListening at http://${process.env.PGHOST}:${process.env.PGPORT}`); }
 });
 
-module.exports = client;
+module.exports = pool;
