@@ -40,11 +40,8 @@ function getRelatedProductIDs(request, response) {
   response.json(related);
 }
 
-async function testDatabase(request, response) {
-  const rows = await models.testDatabase();
-  console.log('CONTROLLER', rows);
-  response.status(200);
-  response.json(rows);
+function testDatabase(request, response) {
+  models.testDatabase(response);
 }
 
 

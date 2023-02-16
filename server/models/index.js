@@ -23,15 +23,17 @@ function returnAllTestData() {
   return testData;
 }
 
-function testDatabase() {
-  db.connect()
+function testDatabase(response) {
+  return db.connect()
     .then((client) => {
       client
         .query('SELECT * FROM styles WHERE id = 1')
-        .then((response) => {
-          client.release();
-          console.log(response.rows);
+        .then((dbRes) => {
+          console.log(dbRes.rows);
+          response.status(200);
+          response.json(dbRes.rows);
         })
+        .finally(() => { client.release(); })
     });
 }
 
