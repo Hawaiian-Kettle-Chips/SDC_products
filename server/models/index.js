@@ -19,12 +19,11 @@ function getRelatedProductIDs() {
 }
 
 function returnAllTestData() {
-  console.log('test data:', testData)
   return testData;
 }
 
 function testDatabase(response) {
-  return db.connect()
+  db.connect()
     .then((client) => {
       client
         .query('SELECT * FROM styles WHERE id = 1')

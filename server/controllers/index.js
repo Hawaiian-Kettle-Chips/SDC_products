@@ -44,6 +44,11 @@ function testDatabase(request, response) {
   models.testDatabase(response);
 }
 
+function testData(request, response) {
+  response.status(200);
+  response.send(models.returnAllTestData());
+}
+
 
 module.exports = {
   getProductByID,
@@ -51,6 +56,7 @@ module.exports = {
   getRelatedProductIDs,
   return404: return404Page,
   status: returnStatusJson,
-  test: testDatabase,
+  testDB: testDatabase,
+  testData: testData,
   default: genericResponse
 };
