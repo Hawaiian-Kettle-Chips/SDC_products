@@ -33,38 +33,38 @@ CREATE TABLE features (
 -- id,productId,name,sale_price,original_price,default_style
 CREATE TABLE styles (
     id BIGINT NOT NULL UNIQUE,
-    productId BIGINT NOT NULL,
+    "productId" BIGINT NOT NULL,
     name TEXT NOT NULL,
     sale_price DOUBLE PRECISION,
     original_price DOUBLE PRECISION,
     default_style BOOLEAN,
     PRIMARY KEY (id),
     CONSTRAINT foreign_key_styles
-        FOREIGN KEY (productId)
+        FOREIGN KEY ("productId")
         REFERENCES products (id)
 );
 
 -- id,styleId,url,thumbnail_url
 CREATE TABLE photos (
     id BIGINT NOT NULL UNIQUE,
-    styleId BIGINT NOT NULL,
+    "styleId" BIGINT NOT NULL,
     thumbnail_url TEXT,
     url TEXT,
     PRIMARY KEY (id),
     CONSTRAINT foreign_key_photos
-        FOREIGN KEY (styleId)
+        FOREIGN KEY ("styleId")
         REFERENCES styles (id)
 );
 
 -- id,styleId,size,quantity
 CREATE TABLE skus (
     id BIGINT NOT NULL UNIQUE,
-    styleId BIGINT NOT NULL,
+    "styleId" BIGINT NOT NULL,
     size TEXT NOT NULL,
     quantity BIGINT,
     PRIMARY KEY (id),
     CONSTRAINT foreign_key_skus
-        FOREIGN KEY (styleId)
+        FOREIGN KEY ("styleId")
         REFERENCES styles (id)
 );
 
