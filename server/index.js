@@ -1,5 +1,6 @@
 // IMPORTS
-require('dotenv').config();
+require('dotenv').config({path: '../.env'})
+
 const express = require('express');
 
 const logger = require('./logger.js');
