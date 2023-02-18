@@ -23,10 +23,20 @@ function returnStatusJson(request, response) {
 }
 
 function getProducts(request, response) {
-  // request parameters
-  // INT    page    default 1   page to return
-  // INT    count   default 5   results per page
-  response.sendStatus(501);
+  models.getProducts(request.query)
+    .then((data) => {
+      console.log('DATA:', data)
+      if (data.length) {
+        response.status(200);
+        response.json(data);
+      } else {
+        response.sendStatus(204);
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      response.sendStatus(500)
+    });
 }
 
 function getProductByID(request, response) {
@@ -61,15 +71,15 @@ function getProductStylesByID(request, response) {
 
 function getRelatedProductIDs(request, response) {
   models.getRelatedProductIDs()
-  .then((data)=>{
-    console.log('DATA:', data)
-    response.status(200);
-    response.json(data[0].array_agg);
-  })
-  .catch((error)=>{
-    console.error(error);
-    response.sendStatus(500);
-  });
+    .then((data) => {
+      console.log('DATA:', data)
+      response.status(200);
+      response.json(data[0].array_agg);
+    })
+    .catch((error) => {
+      console.error(error);
+      response.sendStatus(500);
+    });
 }
 
 function testDatabase(request, response) {

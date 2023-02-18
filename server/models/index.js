@@ -3,6 +3,27 @@ const db = require('../../database');
 const testData = require('../../dev/stub_data');
 
 
+function getProducts(queries) {
+  console.log(queries);
+
+  const count = queries.count || 5;
+  const offset = queries.page || 0;
+  const query = `SELECT
+  *
+  FROM products
+  ORDER BY id ASC
+  LIMIT ${count}
+  OFFSET ${offset * count}
+  `;
+  console.log('QUERY:', query);
+
+  return db.query(query)
+    .then((results) => {
+      return results.rows;
+    })
+    .catch((error) => { console.error(error); });
+}
+
 function getProductByID(id) {
   const queryProd = `
   SELECT *,
@@ -22,7 +43,7 @@ function getProductByID(id) {
     })
     .catch((error) => { console.error(error); });
 
-  // This took on average ~20% longer over 1000 requests
+  // // This took on average ~20% longer over 1000 requests
   // const queryProd = `SELECT * FROM products WHERE id = ${id};`;
   // const queryFeat = `SELECT feature, value FROM features WHERE product_id = ${id};`;
   // let chained = new Promise((resolve) => {
@@ -42,6 +63,7 @@ function getProductByID(id) {
   // });
   // return chained;
 
+  // // Basic Stubbed Test Data
   // console.log('test product');
   // return testData.product;
 }
@@ -68,9 +90,6 @@ function getProductStylesByID(id) {
       return results.rows;
     })
     .catch((error) => { console.error(error); });
-
-  // console.log('test styles');
-  // return testData.styles;
 }
 
 function getRelatedProductIDs() {
@@ -89,9 +108,6 @@ function getRelatedProductIDs() {
       return results.rows;
     })
     .catch((error) => { console.error(error); });
-
-  // console.log('test related');
-  // return testData.related;
 }
 
 function returnAllTestData() {
@@ -113,6 +129,7 @@ function testDatabase(response) {
 
 
 module.exports = {
+  getProducts,
   getProductByID,
   getProductStylesByID,
   getRelatedProductIDs,
