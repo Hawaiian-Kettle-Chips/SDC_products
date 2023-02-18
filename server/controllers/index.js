@@ -22,12 +22,23 @@ function returnStatusJson(request, response) {
   response.json({ database: db, ip: `${request.header}` });
 }
 
+function getProducts(request, response) {
+  // request parameters
+  // INT    page    default 1   page to return
+  // INT    count   default 5   results per page
+  response.sendStatus(501);
+}
+
 function getProductByID(request, response) {
   models.getProductByID(request.params.product_id)
     .then((data) => {
-      console.log('DATA:', data.rows)
-      response.status(200);
-      response.json(data.rows);
+      console.log('DATA:', data)
+      if (data.length) {
+        response.status(200);
+        response.json(data[0]);
+      } else {
+        response.sendStatus(204);
+      }
     })
     .catch((error) => {
       console.error(error);
@@ -36,15 +47,29 @@ function getProductByID(request, response) {
 }
 
 function getProductStylesByID(request, response) {
-  const styles = models.getProductStylesByID();
-  response.status(200)
-  response.json(styles);
+  models.getProductStylesByID(request.params.product_id)
+    .then((data) => {
+      console.log('DATA:', data)
+      response.status(200);
+      response.json(data[0]);
+    })
+    .catch((error) => {
+      console.error(error);
+      response.sendStatus(500)
+    });
 }
 
 function getRelatedProductIDs(request, response) {
-  const related = models.getRelatedProductIDs();
-  response.status(200)
-  response.json(related);
+  models.getRelatedProductIDs()
+  .then((data)=>{
+    console.log('DATA:', data)
+    response.status(200);
+    response.json(data[0].array_agg);
+  })
+  .catch((error)=>{
+    console.error(error);
+    response.sendStatus(500);
+  });
 }
 
 function testDatabase(request, response) {
@@ -58,6 +83,7 @@ function testData(request, response) {
 
 
 module.exports = {
+  getProducts,
   getProductByID,
   getProductStylesByID,
   getRelatedProductIDs,
