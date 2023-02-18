@@ -19,13 +19,20 @@ function return404Page(request, response) {
 function returnStatusJson(request, response) {
   console.info('   returning status json');
   response.status(200);
-  response.json({ database: db });
+  response.json({ database: db, ip: `${request.header}` });
 }
 
 function getProductByID(request, response) {
-  const product = models.getProductByID();
-  response.status(200)
-  response.json(product);
+  models.getProductByID(request.params.product_id)
+    .then((data) => {
+      console.log('DATA:', data.rows)
+      response.status(200);
+      response.json(data.rows);
+    })
+    .catch((error) => {
+      console.error(error);
+      response.sendStatus(500)
+    });
 }
 
 function getProductStylesByID(request, response) {

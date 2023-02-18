@@ -3,9 +3,27 @@ const db = require('../../database');
 const testData = require('../../dev/stub_data');
 
 
-function getProductByID() {
-  console.log('test product');
-  return testData.product;
+function getProductByID(id) {
+  const queryProd = `
+  SELECT *,
+  (SELECT json_agg(
+    json_build_object(
+      'feature', feature,
+      'value', value))
+      AS features FROM features
+      WHERE product_id=${id})
+  FROM products WHERE id = ${id};
+  `;
+  console.log('QUERY:', queryProd);
+
+  return db.query(queryProd)
+    .then((prodRes) => {
+      return prodRes;
+    })
+    .catch((error) => { console.error(error); });
+
+  // console.log('test product');
+  // return testData.product;
 }
 
 function getProductStylesByID() {
@@ -28,7 +46,6 @@ function testDatabase(response) {
       client
         .query('SELECT * FROM styles WHERE id = 1')
         .then((dbRes) => {
-          console.log(dbRes.rows);
           response.status(200);
           response.json(dbRes.rows);
         })

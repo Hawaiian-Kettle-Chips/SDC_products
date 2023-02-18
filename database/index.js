@@ -1,6 +1,6 @@
 // IMPORTS
 const { Pool } = require('pg')
-const pool = new Pool();
+const pool = new Pool({ max: 200 });
 
 pool.connect((error) => {
   if (error) { console.error('DB:', error); }
