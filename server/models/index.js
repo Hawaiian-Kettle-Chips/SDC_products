@@ -69,8 +69,9 @@ function getProductByID(id) {
 }
 
 function getProductStylesByID(id) {
-  const queryStyles = `SELECT *,
-  (SELECT JSON_AGG(
+  const queryStyles = `
+  SELECT "productId",
+  JSON_AGG(
     JSON_BUILD_OBJECT(
       'style_id', id,
       'name', name,
@@ -78,17 +79,33 @@ function getProductStylesByID(id) {
       'sale_price', sale_price,
       'default?', default_style,
       'photos', (
-        WITH photoRows AS (SELECT * FROM photos WHERE "styleId" = styles.id)
+        WITH photoRows AS (
+          SELECT * FROM photos WHERE "styleId" = styles.id
+        )
         SELECT JSON_AGG(
           JSON_BUILD_OBJECT(
-            'url', url,
-            'thumbnail_url', thumbnail_url
-          ))
-          FROM photoRows
+            'thumbnail_url', thumbnail_url::json,
+            'url', url::json
+          )
         )
-    ))
-    AS styles FROM styles WHERE "productId"=${id})
-  FROM products WHERE id = ${id};
+        FROM photoRows
+      ),
+      'skus', (
+        SELECT JSON_OBJECT_AGG(
+          skus.id::text,
+          JSON_BUILD_OBJECT(
+            'quantity', quantity,
+            'size', size
+          )
+        )
+        FROM skus
+        WHERE "styleId" = styles.id
+      )
+    )
+  )
+  AS results
+  FROM styles WHERE "productId" = ${id}
+  GROUP BY "productId";
   `;
 
   console.log('QUERY:', queryStyles);

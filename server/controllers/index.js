@@ -19,7 +19,8 @@ function return404Page(request, response) {
 function returnStatusJson(request, response) {
   console.info('   returning status json');
   response.status(200);
-  response.json({ database: db, ip: `${request.header}` });
+  console.log(request)
+  response.json({ database: db, request_headers: `${request.rawHeaders}` });
 }
 
 function getProducts(request, response) {
