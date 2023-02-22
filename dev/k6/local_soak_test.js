@@ -12,32 +12,10 @@ const server_ip = 'http://localhost:3001';
 export const options = {
   discardResponseBodies: true,
   scenarios: {
-    stress: {
-      executor: "ramping-arrival-rate",
-      preAllocatedVUs: 6000,
-      timeUnit: "1s",
-      stages: [
-        { duration: "30s", target: 100 }, // normal load
-        { duration: "1m", target: 2000 }, // the breaking point
-        { duration: "1m", target: 5000 }, // ... and beyond!
-        { duration: "30s", target: 1000 },
-        { duration: "30s", target: 100 }, // scale down. Recovery stage.
-        { duration: "1m", target: 0 },
-      ],
-    },
-    spike: {
-      executor: "ramping-arrival-rate",
-      preAllocatedVUs: 10000,
-      timeUnit: "1s",
-      startTime: '5m',
-      stages: [
-        { duration: "30s", target: 100 }, // normal load
-        { duration: "30s", target: 3000 }, // spike
-        { duration: "30s", target: 3000 },
-        { duration: "30s", target: 10 }, // scale down. Recovery stage.
-        { duration: "10s", target: 0 },
-      ],
-      gracefulStop: "1m",
+    soak: {
+      executor: 'constant-vus',
+      vus: 1000,
+      duration: '5m',
     },
   },
 }
