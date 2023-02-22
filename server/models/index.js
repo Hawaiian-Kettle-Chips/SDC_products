@@ -4,7 +4,6 @@ const testData = require('../../dev/stub_data');
 
 
 function getProducts(queries) {
-  console.log(queries);
 
   const count = queries.count || 5;
   const offset = queries.page || 0;
@@ -15,7 +14,6 @@ function getProducts(queries) {
   LIMIT ${count}
   OFFSET ${offset * count}
   `;
-  console.log('QUERY:', query);
 
   return db.query(query)
     .then((results) => {
@@ -35,7 +33,6 @@ function getProductByID(id) {
       WHERE product_id=${id})
   FROM products WHERE id = ${id};
   `;
-  console.log('QUERY:', queryProd);
 
   return db.query(queryProd)
     .then((results) => {
@@ -108,8 +105,6 @@ function getProductStylesByID(id) {
   GROUP BY "productId";
   `;
 
-  console.log('QUERY:', queryStyles);
-
   return db.query(queryStyles)
     .then((results) => {
       return results.rows;
@@ -125,8 +120,6 @@ function getRelatedProductIDs() {
     FROM relations
     WHERE current_product_id = 40352;
   `;
-
-  console.log('QUERY:', queryFeat);
 
   return db.query(queryFeat)
     .then((results) => {

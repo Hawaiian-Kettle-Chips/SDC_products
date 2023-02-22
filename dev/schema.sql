@@ -78,3 +78,10 @@ CREATE TABLE relations (
         FOREIGN KEY (current_product_id)
         REFERENCES products (id)
 );
+
+-- hash indicies gave ~95% decrease in query time!
+CREATE INDEX "photos_styleId_idx" ON photos USING HASH("styleId");
+CREATE INDEX "skus_styleId_idx" ON skus USING HASH("styleId");
+CREATE INDEX "styles_productId_idx" ON styles USING HASH("productId");
+CREATE INDEX "relations_productId_idx" ON relations USING HASH("current_product_id");
+CREATE INDEX "featuress_product_id_idx" ON features USING HASH("product_id");

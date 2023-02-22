@@ -7,7 +7,7 @@ function genericResponse(request, response) {
   console.info('   returning status page');
   response.status(200);
   response.send(`The Server is: ✅
-  <p>The Database is ready for queries: ${db._clients.length > 0 ? '✅' : '❌'}`);
+  <p>The Database is: ${db._clients.length > 0 ? '✅' : '❌'}`);
 }
 
 function return404Page(request, response) {
@@ -19,14 +19,12 @@ function return404Page(request, response) {
 function returnStatusJson(request, response) {
   console.info('   returning status json');
   response.status(200);
-  console.log(request)
   response.json({ database: db, request_headers: `${request.rawHeaders}` });
 }
 
 function getProducts(request, response) {
   models.getProducts(request.query)
     .then((data) => {
-      console.log('DATA:', data)
       if (data.length) {
         response.status(200);
         response.json(data);
@@ -43,7 +41,6 @@ function getProducts(request, response) {
 function getProductByID(request, response) {
   models.getProductByID(request.params.product_id)
     .then((data) => {
-      console.log('DATA:', data)
       if (data.length) {
         response.status(200);
         response.json(data[0]);
@@ -60,7 +57,6 @@ function getProductByID(request, response) {
 function getProductStylesByID(request, response) {
   models.getProductStylesByID(request.params.product_id)
     .then((data) => {
-      console.log('DATA:', data)
       response.status(200);
       response.json(data[0]);
     })
@@ -73,7 +69,6 @@ function getProductStylesByID(request, response) {
 function getRelatedProductIDs(request, response) {
   models.getRelatedProductIDs()
     .then((data) => {
-      console.log('DATA:', data)
       response.status(200);
       response.json(data[0].array_agg);
     })
