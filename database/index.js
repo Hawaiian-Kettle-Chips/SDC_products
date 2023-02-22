@@ -11,12 +11,12 @@ Pool.prototype.query = async function query(...args) {
   }
 }
 
-const pool = new Pool({ max: 50 });
+const pool = new Pool({ max: process.env.PGMAXCONNECTIONS }); // defaults to 10 on error
 
 pool.connect((error) => {
   if (error) { console.error('DB:', error); }
   else {
-    console.info('DB: Process ID is', process.pid);
+    console.info('DB: Process ID is', process.pid, pool);
     console.info(`    Listening at http://${process.env.PGHOST}:${process.env.PGPORT}`);
   }
 });

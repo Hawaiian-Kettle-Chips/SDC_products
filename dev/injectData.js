@@ -7,7 +7,7 @@ const { Pool } = require('pg');
 const fastcsv = require('fast-csv');
 
 
-const pool = new Pool({ max: 200, idleTimeoutMillis: 0, connectionTimeoutMillis: 0 });
+const pool = new Pool({ max: process.env.PGMAXCONNECTIONS, idleTimeoutMillis: 0, connectionTimeoutMillis: 0 });
 
 const tables = ['products', 'relations', 'features', 'styles', 'photos', 'skus'];
 
