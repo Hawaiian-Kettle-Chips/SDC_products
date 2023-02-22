@@ -14,7 +14,7 @@ export const options = {
   scenarios: {
     soak: {
       executor: 'constant-vus',
-      vus: 1000,
+      vus: 2000,
       duration: '5m',
     },
   },
