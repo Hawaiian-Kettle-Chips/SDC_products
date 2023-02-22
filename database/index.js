@@ -16,7 +16,7 @@ const pool = new Pool({ max: process.env.PGMAXCONNECTIONS }); // defaults to 10 
 pool.connect((error) => {
   if (error) { console.error('DB:', error); }
   else {
-    console.info('DB: Process ID is', process.pid, pool);
+    console.info('DB: Process ID is', process.pid);
     console.info(`    Listening at http://${process.env.PGHOST}:${process.env.PGPORT}`);
   }
 });
