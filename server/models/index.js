@@ -81,8 +81,8 @@ function getProductStylesByID(id) {
         )
         SELECT JSON_AGG(
           JSON_BUILD_OBJECT(
-            'thumbnail_url', thumbnail_url::json,
-            'url', url::json
+            'thumbnail_url', thumbnail_url::text,
+            'url', url::text
           )
         )
         FROM photoRows
