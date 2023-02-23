@@ -12,6 +12,7 @@ const server = express();
 
 server.use(express.json());
 server.use(logger);
+server.use('/favicon.ico', express.static('./images/favicon.ico'));
 server.use(router);
 
 server.listen(process.env.PORT, (error) => {
