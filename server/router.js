@@ -12,6 +12,9 @@ router.get('/products/:product_id', controllers.getProductByID);
 router.get('/products/:product_id/styles', controllers.getProductStylesByID);
 router.get('/products/:product_id/related', controllers.getRelatedProductIDs);
 
+// this is a non-static temporary route from https://loader.io and will echo this path
+router.get('/loaderio-7bbd3dba52a57734eb2411c49f7dec65', controllers.verifyLoaderIO);
+
 router.get('/status', controllers.status);
 router.get('/testDB', controllers.testDB);
 router.get('/testData', controllers.testData);

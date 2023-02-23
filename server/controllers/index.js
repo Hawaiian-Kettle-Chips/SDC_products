@@ -87,6 +87,12 @@ function testData(request, response) {
   response.send(models.returnAllTestData());
 }
 
+function returnString(request, response) {
+  response.status(200);
+  const echoPath = request.path.replaceAll('/','');
+  response.send(echoPath);
+}
+
 
 module.exports = {
   getProducts,
@@ -97,5 +103,6 @@ module.exports = {
   status: returnStatusJson,
   testDB: testDatabase,
   testData: testData,
+  verifyLoaderIO: returnString,
   default: genericResponse
 };
