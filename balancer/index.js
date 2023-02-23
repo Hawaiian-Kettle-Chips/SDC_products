@@ -24,7 +24,6 @@ const requestHandler = async function (request, response) {
     });
 
     response.status(200)
-    console.info(server_response.status);
     response.send(server_response.data);
   }
   catch (error) {
