@@ -21,4 +21,9 @@ pool.connect((error) => {
   }
 });
 
+pool.on('error', (error)=>{
+  console.error('DB ERROR', error);
+});
+
+
 module.exports = pool;

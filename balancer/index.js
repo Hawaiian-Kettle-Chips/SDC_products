@@ -32,8 +32,8 @@ const requestHandler = async function (request, response) {
       response.status(404).send(error.response.data)
     }
     else {
-      console.info('500');
-      response.sendStatus(500);
+      console.info('500', error.code);
+      response.status(500).send(error);
     }
 
   }

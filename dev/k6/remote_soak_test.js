@@ -7,14 +7,14 @@ import { textSummary } from "https://jslib.k6.io/k6-summary/0.0.1/index.js";
 
 
 // This value changes per run of `lt`
-const server_ip = 'http://13.57.230.224:3001';
+const server_ip = 'http://3.101.115.152:3999';
 
 export const options = {
   discardResponseBodies: true,
   scenarios: {
     soak: {
       executor: 'constant-vus',
-      vus: 2000,
+      vus: 1500,
       duration: '5m',
     },
   },
@@ -27,7 +27,6 @@ function getRandomIntInclusive(min, max) {
 export function handleSummary(data) {
   return {
     "stress-result.html": htmlReport(data),
-    'stress-summary.json': JSON.stringify(data),
     stdout: textSummary(data, { indent: "║", enableColors: true })
   };
 }
