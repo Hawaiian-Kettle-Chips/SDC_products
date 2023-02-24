@@ -12,7 +12,6 @@ let current_server = 0;
 const requestHandler = async function (request, response) {
   const { method, url, headers, body } = request;
   const server = servers[current_server];
-  console.info('balancing:', `${server}${url}`);
 
   (current_server === servers.length - 1) ? current_server = 0 : current_server += 1;
 
