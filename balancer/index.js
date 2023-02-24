@@ -38,6 +38,10 @@ const requestHandler = async function (request, response) {
   }
 }
 
+load_balancer.use(`/${process.env.LOADER_IO_URL}`, (request, response) => {
+  response.send(process.env.LOADER_IO_URL);
+});
+
 load_balancer.use('/favicon.ico', express.static('./images/favicon.ico'));
 load_balancer.use((request, response) => { requestHandler(request, response); });
 load_balancer.listen(process.env.LB_PORT, (error) => {
