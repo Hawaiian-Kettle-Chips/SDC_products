@@ -12,10 +12,17 @@ const server_ip = 'http://184.169.192.232';
 export const options = {
   discardResponseBodies: true,
   scenarios: {
-    soak: {
-      executor: 'constant-vus',
-      vus: 4000,
-      duration: '5m',
+    rampUp: {
+      executor: 'ramping-vus',
+      startVUs: 100,
+      stages: [
+        { duration: '30s', target: 1000 },
+        { duration: '2m', target: 2000 },
+        { duration: '2m', target: 4000 },
+        { duration: '30s', target: 8000 },
+        { duration: '30s', target: 16000 },
+      ],
+      gracefulRampDown: '30s',
     },
   },
 }
@@ -34,7 +41,5 @@ export function handleSummary(data) {
 export default function () {
   let randomID = String(getRandomIntInclusive(10, 10010));
   http.get(server_ip + '/products/' + randomID);
-  http.get(server_ip + '/products/' + randomID + '/styles');
-  http.get(server_ip + '/products/' + randomID + '/related');
-  // sleep(1)
+  sleep(1)
 }
